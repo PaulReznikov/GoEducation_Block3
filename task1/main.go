@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 /*
 Запуск нескольких горутин и вывод их результата в канал
@@ -13,6 +15,7 @@ import "fmt"
 func main() {
 
 	ch := make(chan int) // ch := make(chan int, 5)
+	defer close(ch)
 	//wg := &sync.WaitGroup{}
 
 	for i := 0; i < 5; i++ {
@@ -26,7 +29,7 @@ func main() {
 
 		fmt.Println(<-ch)
 	}
-
+	//time.Sleep(3 * time.Second)
 	//wg.Wait()
 	//close(ch)
 
